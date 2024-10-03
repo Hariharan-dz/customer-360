@@ -1,0 +1,359 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<section class="whole-content-wrapper">
+  <!-- subscription header -->
+  <div>
+    <h1 class="common-header">Subscription Details</h1>
+  </div>
+  <!-- 3 card container -->
+  <div class="three-card-container">
+    <ion-card class="ion-no-margin card-one" style="margin-right: 16px">
+      <div class="ion-padding header-content">
+        <ion-label class="f-14">Service Details</ion-label>
+        <a class="f-12 cursor-pointer">View More</a>
+      </div>
+      <div class="card-content">
+        <div class="">
+          <ion-label class="card-left-heading">Subscription Plan: </ion-label>
+          <ion-label class="card-right-value">Broadband</ion-label>
+        </div>
+        <div class="">
+          <ion-label class="card-left-heading">Date of Commencement: </ion-label>
+          <ion-label class="card-right-value">Dec12, 2022</ion-label>
+        </div>
+        <div class="">
+          <ion-label class="card-left-heading"> Status: </ion-label>
+          <div style="float: right" class="active-container">
+            <ion-icon name="ellipse"></ion-icon>
+            <ion-label class="card-right-value">Active</ion-label>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card class="ion-no-margin card-three" style="margin-right: 16px">
+      <div class="ion-padding header-content">
+        <ion-label class="f-14">Billing Details</ion-label>
+        <a class="f-12 cursor-pointer">View More</a>
+      </div>
+      <div class="card-content">
+        <div>
+          <ion-label class="card-left-heading">For: </ion-label>
+          <ion-label class="card-right-value">AC234343</ion-label>
+        </div>
+        <div>
+          <ion-label class="card-left-heading">Due Amount : </ion-label>
+          <ion-label class="card-right-value">CAD 199.00</ion-label>
+        </div>
+        <div>
+          <ion-label class="card-left-heading">Updated Date: </ion-label>
+          <ion-label class="card-right-value">25 Feb 2020</ion-label>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card class="ion-no-margin card-two">
+      <div class="ion-padding header-content">
+        <ion-label class="f-14">Usage Details</ion-label>
+        <a class="f-12 cursor-pointer">View More</a>
+      </div>
+      <ion-row>
+        <ion-col size="8">
+          <div class="card-content">
+            <div>
+              <ion-label class="card-left-heading">For: </ion-label>
+              <ion-label class="left-align">BRBS-001213243234</ion-label>
+            </div>
+            <div>
+              <ion-label class="card-left-heading">Days Left: </ion-label>
+              <ion-label class="left-align">16 days</ion-label>
+            </div>
+            <div>
+              <ion-label class="card-left-heading">Updated Date: </ion-label>
+              <ion-label class="left-align">25,Mar 2023</ion-label>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <apx-chart [series]="chart.series" [chart]="chart.chart" [plotOptions]="chart.plotOptions"
+              [labels]="chart.labels" [colors]="chart.colors"></apx-chart>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <!-- Insights container -->
+  <div class="margin-32">
+    <h1 class="common-header">Insights</h1>
+  </div>
+  <div class="insight-main-wrapper">
+    <div class="insight-left-container">
+      <ul class="ion-no-margin insights-list">
+        <li>This account is a current customer and has opened marketing emails in the last 2 days </li>
+        <li *ngIf="userType == 'ABANDONDED_CART'">Cart with value <span style="font-weight: bold;">499 USD</span>
+          abandoned on February 25, 2022. It contains
+          1 unit(s) of Apple watch series 7 41mm.
+          <span class="a-link cursor-pointer" (click)="setOpen(true)">View Details</span>
+        </li>
+        <li>Apple watch series 8 41mm browsed on February 22, 2022.</li>
+      </ul>
+    </div>
+
+    <div class="insight-right-container">
+      <ion-row class="line-1">
+        <ion-col>
+          <ion-label class="f-14">Last purchase date</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="line-2">
+        <ion-col>
+          <!-- <ion-note class="f-12">25 February, 2022</ion-note> -->
+          <ion-note class="f-12"> {{lastPurchaseData?.purchase_order_date || '25 Febrary 2022'}} </ion-note>
+        </ion-col>
+      </ion-row>
+      <ion-row class="line-3">
+        <ion-col>
+          <ion-label>$ 80</ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <!-- buttons -->
+  <ion-buttons class="three-btns">
+    <ion-button color="primary">
+      <ion-label style="color: white">Schedule Call</ion-label>
+    </ion-button>
+    <ion-button color="secondary" style="border: 1px solid var(--ion-color-primary)">
+      <ion-label>Assign to Campaign</ion-label>
+    </ion-button>
+    <ion-button color="secondary" style="border: 1px solid var(--ion-color-primary)">
+      <ion-label>More</ion-label>
+    </ion-button>
+  </ion-buttons>
+
+  <!-- Recommended offers -->
+  <div style="clear: both;">
+    <div style="margin-bottom: 24px;">
+      <h1 class="common-header">Recommended Offers</h1>
+    </div>
+    <!-- card container / recomend -->
+    <div class="ion-margin-bottom subscription-plan-cards">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let item of recommendedOffer">
+          <div class="backgrnd">
+            <div class="white-slit">
+            </div>
+            <div style="width: 170px; height: 63px; margin-left: 16px; margin-top: 19px; text-align: left">
+              <ion-label style="text-transform: uppercase; font-size: 16px;"> {{item.offerName}} </ion-label>
+            </div>
+            <div
+              style="width: 108px; height: 26px; background-color: #CCCCCC; border-radius: 4px; margin-left: 16px; margin-top: 12px">
+              <ion-label style="font-size: 10px; text-align: center;">Subscribe Premium</ion-label>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+
+  <!-- data table 1 -->
+  <!-- *ngIf="openOrderStatus != null || ''" -->
+  <div class="margin-32" *ngIf="userType != 'NEW_USER' && userType != 'PROSPECT'">
+    <h1 class="common-header">Open Orders</h1>
+    <div class="tile-container">
+      <ion-card class="ion-no-margin ion-margin-end" *ngFor="let obj of tilesObj">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="p-8">
+            <ion-col size="8">
+              <ion-label class="sml-heading">
+                Order Number
+              </ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-label class="sml-heading">
+                Status
+              </ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="8">
+              <ion-label class="content">
+                {{obj.task_number}}
+              </ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-label class="content">
+                {{obj.status}}
+              </ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="p-8 down-content">
+            <ion-col size="12">
+              <ion-label class="sml-heading">
+                Summary
+              </ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="8">
+              <ion-label class="content">
+                Booking Appoinment
+              </ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <a class="f-12 cursor-pointer" style="color: var(--ion-color-primary); ">View Details</a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+
+
+  </div>
+
+  <!-- data table-->
+  <!-- *ngIf="userDetails != null || ''" -->
+  <div class="margin-32" *ngIf="userType != 'NEW_USER' && userType != 'PROSPECT'">
+    <h1 class="common-header">Tasks</h1>
+    <app-data-table #tasks_grid [tableDetails]="tasks"></app-data-table>
+  </div>
+
+  <!-- ion-model -->
+  <div class="modal-popup">
+    <ion-modal style="--height: auto;" [isOpen]="isModalOpen" backdropDismiss="false">
+      <ng-template class="model">
+        <!-- header -->
+        <ion-grid style="margin: 0; padding: 0;">
+          <ion-row class="model-inline">
+            <ion-col size="12">
+              <ion-item style="--padding-start: 0;">
+                <ion-label class="model_header">Card Details</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col style="margin: 15px 0; padding: 0 20px;" size="12">
+              <ion-label>{{items.length}} item(s) in the cart</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="model-inline model-scroll">
+            <ion-col size="12">
+              <ion-row class="model-bottom" *ngFor="let data of items">
+                <ion-col size="3">
+                  <ion-img class="model-img" src="{{data.product}}"></ion-img>
+                </ion-col>
+                <ion-col size="9" style="padding-top: 0;">
+                  <ion-row>
+                    <ion-col size="12">
+                      <h2 style="margin-left:0px;" class="model-pro-title">{{data.title}}</h2>
+                    </ion-col>
+                    <ion-col size="3.5" style="display: flex;">
+                      <div class="btn-qty">
+                        <ion-label class="btn-qty-label">Qty</ion-label>
+                        <ion-item style="width: 60px;" lines="none" class="dropdown-stacked">
+                          <ion-label style="--inner-padding-end: 0px;" position="stacked"></ion-label>
+                          <ion-select value={{data.Qty}} class="ion-no-padding" interface="popover">
+                            <ion-select-option value="1">1</ion-select-option>
+                            <ion-select-option value="2">2</ion-select-option>
+                            <ion-select-option value="3">3</ion-select-option>
+                            <ion-select-option value="4">4</ion-select-option>
+                          </ion-select>
+                        </ion-item>
+                      </div>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-note>Added on:<span class="model-pro-title">{{data.date}}</span> </ion-note>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col style="padding-left: 11px;" offset="3" size="9">
+                  <ion-label class="model-prod-price">
+                    $ {{data.price}}
+                  </ion-label>
+                  <ion-label class="model-price-label">Inclusive of all taxes</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="model-footer-button">
+              <ion-buttons style="display: flex;justify-content: center;">
+                <ion-button style="background-color: #FFFFFF; color: #6495ED;" class="menu-btn"
+                  (click)="setOpen(false)"><ion-label class="menu-btn-label">Cancel</ion-label></ion-button>
+                <ion-button style="background-color: #6495ED; color: #FFFFFF;" class="menu-btn"><ion-label
+                    class="menu-btn-label">Continue to
+                    Payment</ion-label></ion-button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-template>
+    </ion-modal>
+  </div>
+</section>
+
+<!-- Module for particular user  -->
+<div class="modal-popup">
+  <ion-modal style=" --width:565px;--height: auto;--border-radius: 10px;" [isOpen]="isPopupOpen"
+    [backdropDismiss]=false>
+    <ng-template class="model">
+      <!-- header -->
+      <ion-grid style="margin: 0; padding: 0;">
+        <ion-row class="model-inline">
+          <ion-col size="12">
+            <ion-item lines="" style="--padding-start: 0;">
+              <ion-label class="model_header">TASK DETAIL</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="model-inline">
+        </ion-row>
+        <ion-row class="model-inline scroll-height" style=" margin-top: 10px;">
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">Id</ion-note>
+            <ion-label>{{task.id}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">TASK NAME</ion-note>
+            <ion-label>{{task.type_name}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">Description</ion-note>
+            <ion-label>{{task.description}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">PRIORITY</ion-note>
+            <ion-label>{{task.priority}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">Due DATE</ion-note>
+            <ion-label>{{task.dueDate}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">STATUS</ion-note>
+            <ion-label>{{task.status}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">ASSIGNEE</ion-note>
+            <ion-label>{{task.assignee}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-label>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-footer>
+          <ion-row>
+            <ion-col size="12" class="model-footer-button">
+              <ion-buttons class="close-btn">
+                <ion-button class="close-btn-label" (click)="isPopupOpen=false"><ion-label
+                    class="menu-btn-text">OK</ion-label></ion-button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-footer>
+      </ion-grid>
+    </ng-template>
+  </ion-modal>
+</div>

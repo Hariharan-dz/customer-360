@@ -1,0 +1,404 @@
+.heading-style {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--common-text);
+}
+
+.card-heading {
+  width: 200px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 17px;
+}
+
+.card-number {
+  width: 55px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 32px;
+  color: var(--ion-color-primary);
+}
+
+.card-open-close1 {
+  background: rgba(239, 239, 239, 0.8);
+  width: 132px;
+  border-radius: 2px;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+}
+
+.card-open-close2 {
+  background: rgba(239, 239, 239, 0.8);
+  width: 222px;
+  border-radius: 2px;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--common-text);
+}
+
+.card-seperator {
+  border: 1px solid var(--common-text-white);
+}
+
+.create-request-button {
+  border: 1px solid var(--ion-color-primary);
+}
+
+.open-content {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-color);
+}
+
+.close-content {
+  margin-left: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-color);
+}
+
+//
+
+.request-card {
+  padding: 32px 40px;
+  margin-bottom: 40px
+}
+
+.open-close-count-color {
+  color: black;
+}
+
+.create-req-btn {
+  border: 1px solid var(--ion-color-primary);
+
+  ion-label {
+    text-transform: none;
+  }
+}
+
+.common-header {
+  // margin-top: 64px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #212121;
+
+}
+
+.model-footer-button {
+  padding: 10px 0;
+  background: #F6F6F6;
+}
+
+.menu-btn {
+  padding: 0px 0px;
+  margin: 10px 10px;
+  border: 1px solid #6495ED;
+  height: 44px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.menu-btn-label {
+  padding: 12px 40px !important
+}
+
+.model-inline {
+  padding: 0 40px;
+}
+
+.model-header-right {
+  height: 26px;
+  display: inline-flex;
+  padding: 0px 9px;
+  margin-bottom: 5px;
+}
+
+.comments-icon {
+  float: left;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  border: 1px solid #666666;
+}
+
+.comments-des {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #808080;
+}
+
+.com-para {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #212121;
+  margin: 12px 0px;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #DADADA;
+}
+
+.inform-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #212121;
+}
+
+.inform-subtitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #212121;
+}
+
+.feedback-p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #212121;
+}
+
+.close-btn {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.close-btn-label {
+  background-color: #6495ED;
+  color: #FFFFFF;
+  border-radius: 5px;
+  height: 44px;
+}
+
+.scroll-height {
+  overflow: auto;
+  margin-top: 15px;
+  padding: 0 25px 0 40px;
+}
+
+.comments-space {
+  border-bottom: 1px solid #DADADA;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+}
+
+.model_header {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: #212121;
+}
+
+.breadcrumb-native {
+  padding: 0px 0px;
+}
+
+.margin-col {
+  margin-bottom: 16px
+}
+
+.create-ticket-model {
+  @import '../../../theme/form.scss';
+
+  .header {
+    margin: 40px, 0px 24px 40px;
+  }
+
+  ion-content {
+    height: 540px;
+    --background: white
+  }
+
+  .header-label {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: "Roboto";
+    line-height: 28px;
+  }
+
+  .header-line {
+    margin-top: 30px;
+    padding-bottom: 24px;
+    border-bottom: solid 1px #DADADA;
+    border-radius: 1px;
+  }
+
+  .content {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #212121;
+  }
+
+  .border {
+    border: 1px solid#CFCFCF;
+    border-radius: 4px;
+  }
+
+  .icon-color {
+    color: var(--text-color);
+  }
+
+  .button-color {
+    background-color: (--common-text-white);
+  }
+
+  .redcolor {
+    color: #F70000;
+  }
+
+  .textbox-left {
+    padding-right: 20px;
+  }
+
+  .textbox-right {
+    padding-left: 20px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .titleText {
+    padding: 0px 0px 24px 0px;
+    margin: 40px 40px 0px 40px;
+    border-bottom: 1px solid #DADADA;
+  }
+
+  ion-textarea {
+    margin: 0px;
+  }
+
+  .dynamic-tag-model {
+    --width: 50%;
+    --height: 82%;
+    // --min-height: 400px;
+    // --max-height: 2500px;
+    --border-radius: 9px;
+  }
+
+  .margindetail {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .grid-size {
+    padding-top: 28px;
+  }
+
+  ion-select::part(icon) {
+    right: 15px;
+  }
+
+}
+
+.add-comment {
+  display: flex;
+  justify-content: end;
+
+}
+
+.commant-textarea {
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  height: 80px;
+}
+
+.modal-title-heading {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.menu-btn-text {
+  padding: 12px 40px !important
+}
+
+.graph-data {
+  ion-col {
+    padding: 0px;
+
+    ion-card {
+      margin: 0px;
+    }
+  }
+
+}
+
+.ticket-card {
+  padding: 24px;
+
+  ion-label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .chart-container {
+    margin-left: -58px;
+    margin-top: 5px;
+  }
+}
+
+.campaign-card {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  // border-radius: 5px;
+  height: 150px;
+
+  .label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: black;
+    margin: 20px 0px 0px 24px;
+  }
+
+  .graph-data {
+    div {
+      padding: 7px 0px;
+    }
+  }
+}
+
+.display-flex {
+  display: flex;
+}

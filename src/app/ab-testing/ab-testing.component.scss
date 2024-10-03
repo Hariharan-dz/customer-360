@@ -1,0 +1,182 @@
+@import "../../theme/form.scss";
+@import "../../theme/date-picker.scss";
+
+.header-container {
+  border-bottom: 0.5px solid #dadada !important;
+}
+
+.main-grid-container {
+  padding: 0px;
+}
+
+ion-content {
+  // --background: #fafafa;
+
+  ion-grid {
+    height: 100%;
+
+    .notification-side-container {
+      border-right: 0.5px solid #dadada;
+
+      .filter-search-option {
+        padding: 37px 25px 5px 25px;
+        color: #344563;
+
+        .filter-option {
+          font-weight: 600;
+        }
+
+        .ion-search-bar {
+          margin-top: 20px;
+          --box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+            rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+          --border-radius: 24px;
+          --icon-color: #50f40c;
+          --color: #0f261f;
+        }
+      }
+    }
+  }
+}
+
+/*media query*/
+@media (min-width: 992px) {
+  .table-media-query {
+    width: calc(100% - 274px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .table-media-query {
+    width: calc(100% - 274px) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-media-query {
+    width: calc(100% - 0px);
+  }
+}
+
+@media (min-width: 768px) {
+  .table-media-query {
+    width: calc(100% - 0px);
+  }
+}
+
+.wrapper {
+  height: calc(100vh - 124px);
+  // background-color: #e21919;
+}
+
+
+
+.main-grid-container {
+  height: 100%;
+}
+
+// category list design ***
+.category-list {
+  line-height: 0px;
+  padding-top: 0px;
+
+  .category-list-header {
+    ion-list-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #344563;
+    }
+
+    ion-button {
+      text-transform: none;
+    }
+  }
+}
+
+// category list design ***
+.ion-padding-horizontal {
+  line-height: 1px;
+  padding-top: 0px;
+
+  .category-list-header {
+    ion-list-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #344563;
+    }
+
+    ion-button {
+      text-transform: none;
+    }
+  }
+}
+
+//for col 9
+
+.container-background {
+  background-color: #fafafa;
+}
+
+
+.right-contant {
+  // padding-bottom: 17px;
+}
+
+//horixontal gap for checkbox outer div
+.checkbox-content {
+  padding: 0% 5% 0% 5%;
+
+  .check-box-tilte-container p {
+    padding-top: 5%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .check-box-wrapper {
+    font-size: 12px;
+    padding: 0% !important;
+    --background: #fbfbfb;
+
+    ion-label {
+      line-height: 0%;
+      font-size: 12px;
+    }
+  }
+}
+
+.check-box-wrapper ion-checkbox {
+  --size: 15px;
+  --background-checked: #079f71;
+}
+
+ion-checkbox::part(container) {
+  border: 1.8px solid rgba(128, 128, 128, 0.295);
+  border-radius: 2px;
+}
+
+.user-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.table-outer-layout:after {
+  height: 98%;
+}
+
+
+.search-date-container {
+  ion-col {
+    display: flex;
+    align-items: center;
+
+  }
+}
+
+.dropdown-stacked ion-select {
+  font-size: 14px;
+  line-height: 20px;
+}

@@ -1,0 +1,75 @@
+.social_info_buttons {
+  border-radius: 20px;
+  border: 1px solid var(--ion-color-primary);
+
+  ion-label {
+    padding: 0;
+    min-width: min-content;
+  }
+}
+
+.intercard {
+  padding: 10px 20px;
+  margin: 0;
+  border-radius: 0;
+}
+
+.logos {
+  margin-top: 15px;
+  width: 100%;
+  float: left;
+  // margin-bottom: 30px;  
+}
+
+.logo-style {
+  float: right;
+  color: var(--text-color);
+  border: 1px solid #EFEFEF;
+  background: #EFEFEF;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.logo-style-tweet {
+  float: right;
+  color: var(--ion-color-primary);
+  border: 1px solid #EFEFEF;
+  background: #EFEFEF;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.label {
+  width: 100%;
+  float: left;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: var(--common-text);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+
+}
+
+.amount {
+  color: var(--common-text);
+  font-size: 14px;
+}
+
+.content {
+  border-bottom: 1px solid #EFEFEF;
+  width: 100%;
+  float: left;
+  padding-inline-start: 0;
+  // overflow: auto;
+}
+
+.status {
+  width: 100%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+.history_style {
+  padding-bottom: 16px;
+}

@@ -1,0 +1,255 @@
+<section class="whole-content-wrapper ">
+  <ion-row>
+    <ion-col size="12">
+      <h1 class="common-header">Data Overview</h1>
+      <div class="sub-heading">
+        <div class="f-14">
+          <ion-note>Ac Number: </ion-note>
+          <ion-text>{{account.accountNumber}}</ion-text>
+        </div>
+        <div class="f-14">
+          <ion-note>Plan: </ion-note>
+          <ion-text>{{account.paymentPlan[0].plan_type}}</ion-text>
+        </div>
+        <div class="f-14">
+          <ion-note>Total Quota: </ion-note>
+          <ion-text>100GB</ion-text>
+        </div>
+        <div class="f-14">
+          <ion-note>Monthly Tariff: </ion-note>
+          <ion-text>{{account.paymentPlan[0].total_amount_value}}</ion-text>
+        </div>
+        <div class="f-14">
+          <ion-note>Current Status: </ion-note>
+          <ion-text>{{account.state}}</ion-text>
+        </div>
+      </div>
+      <div class="card-box-shadow box-shadow">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="2.8">
+              <div>
+                <apx-chart [series]="chart.series" [chart]="chart.chart" [plotOptions]="chart.plotOptions"
+                  [colors]="chart.colors" [labels]="chart.labels"></apx-chart>
+              </div>
+            </ion-col>
+            <ion-col size="2.3" class="col-margin">
+              <div class="Flex-item">
+                <div>
+                  <ion-note>DATA USED</ion-note>
+                  <ion-text>{{dataUsed || "-"}}</ion-text>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2.3" class="col-margin">
+              <div class="Flex-item">
+                <div>
+                  <ion-note>DATA lEFT</ion-note>
+                  <ion-text>{{dataLeft || "-"}}</ion-text>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2.3" class="col-margin">
+              <div class="Flex-item">
+                <div>
+                  <ion-note>DATA SPEED</ion-note>
+                  <ion-text>{{dataSpeed || "-"}}</ion-text>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2.3" class="col-margin">
+              <div class="Flex-item no-border">
+                <div>
+                  <ion-note>DAYS LEFT</ion-note>
+                  <ion-text>{{daysLeft || "-"}}</ion-text>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="buy-data-btn">
+        <ion-button (click)="setOpen(true)" class="ion-no-margin" color="primary">
+          <ion-img class="icon-up-and-arrow" src="../../../assets/icons/dot-mobile/arrow-up-down-line.png"></ion-img>
+          <ion-label style="margin: 8px">Buy Data</ion-label>
+        </ion-button>
+      </div>
+
+      <div class="margin-32">
+        <ion-row>
+          <ion-col>
+            <div class="item-left">
+              <ion-text>Data Usage Analytics</ion-text>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="item-right ">
+              <ul class="tab-container">
+                <li *ngFor="let Tab of dateTab" [ngClass]="{'active' : selectedList===Tab}" (click)="showComponent(Tab)"
+                  class="cursor-pointer">
+                  {{Tab}}
+                </li>
+              </ul>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <div *ngIf="selectedList==='Day'">
+          <div class="chart-wrapper">
+            <apx-chart [series]="spline.series" [chart]="spline.chart" [xaxis]="spline.xaxis" [stroke]="spline.stroke"
+              [tooltip]="spline.tooltip" [dataLabels]="spline.dataLabels" [colors]="spline.colors"></apx-chart>
+          </div>
+          <div class="click-tableview-btn margin-32">
+            <ion-button color="secondary">
+              <ion-label>Click to see table view</ion-label>
+            </ion-button>
+          </div>
+        </div>
+        <div *ngIf="selectedList==='Monthly'">
+          <div> <apx-chart [series]="barMonthly.series" [chart]="barMonthly.chart" [dataLabels]="barMonthly.dataLabels"
+              [plotOptions]="barMonthly.plotOptions" [yaxis]="barMonthly.yaxis" [legend]="barMonthly.legend"
+              [fill]="barMonthly.fill" [stroke]="barMonthly.stroke" [tooltip]="barMonthly.tooltip"
+              [xaxis]="barMonthly.xaxis" [colors]="barMonthly.colors"></apx-chart>
+          </div>
+          <div class="click-tableview-btn margin-32">
+            <ion-button color="secondary">
+              <ion-label>Click to see table view</ion-label>
+            </ion-button>
+          </div>
+        </div>
+        <!-- <div>
+          <div> <apx-chart [series]="barMonthly.series" [chart]="barMonthly.chart" [dataLabels]="barMonthly.dataLabels"
+              [plotOptions]="barMonthly.plotOptions" [yaxis]="barMonthly.yaxis" [legend]="barMonthly.legend"
+              [fill]="barMonthly.fill" [stroke]="barMonthly.stroke" [tooltip]="barMonthly.tooltip"
+              [xaxis]="barMonthly.xaxis" [colors]="barMonthly.colors"></apx-chart>
+          </div>
+          <div style="display: flex; justify-content: center;">
+            <ion-button color="secondary" style="border: 1px solid #6495ED; border-radius: 4px;">click to see table
+              view</ion-button>
+          </div>
+        </div> -->
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="ion-padding modal-popup">
+    <ion-modal style="--width: 670px; --height: auto;" [isOpen]="isModalOpen" backdropDismiss="false">
+      <ng-template>
+        <!-- header -->
+        <ion-grid style="margin: 0; padding: 0;">
+          <ion-row class="model-inline" style="padding: 0px 20px;">
+            <ion-col size="12">
+              <ion-item style="--padding-start: 0;">
+                <ion-label class="modal_header">Data add-on purchase</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-label class="modal-sub-header">Buy additional data</ion-label>
+            </ion-col>
+            <ion-col style="padding-left: 2px;" size="3">
+              <ion-buttons>
+                <ion-button class="modal-button">
+                  <ion-label><span style="font-size: 16px;">1 GB</span>/month <span
+                      class="modal-span-price">$99.00</span></ion-label>
+                </ion-button>
+              </ion-buttons>
+            </ion-col>
+            <ion-col size="3">
+              <ion-buttons>
+                <ion-button class="modal-button">
+                  <ion-label><span style="font-size: 16px;">3 GB</span>/month <span
+                      class="modal-span-price">$199.00</span></ion-label>
+                </ion-button>
+              </ion-buttons>
+            </ion-col>
+            <ion-col size="3">
+              <ion-buttons>
+                <ion-button class="modal-button">
+                  <ion-label><span style="font-size: 16px;">3 GB</span>/month <span
+                      class="modal-span-price">$299.00</span></ion-label>
+                </ion-button>
+              </ion-buttons>
+            </ion-col>
+            <ion-col size="3">
+              <ion-buttons>
+                <ion-button class="modal-custome-button" (click)="isShowCustom=!isShowCustom">
+                  <ion-label>+ Custom</ion-label>
+                </ion-button>
+              </ion-buttons>
+            </ion-col>
+            <ion-col style="padding-left: 0px;" size="12" *ngIf="isShowCustom">
+              <ion-row>
+                <ion-col size="4">
+                  <ion-item fill="outline" class="textbox">
+                    <ion-label position="floating">GB</ion-label>
+                    <ion-input type="number" min="1"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col style="padding-left: 5px;" size="12">
+              <ion-label class="modal-promo-label">Have a promo code?</ion-label>
+            </ion-col>
+            <ion-col style="padding-left: 0px;" size="9">
+              <ion-row>
+                <ion-col size="9">
+                  <ion-item fill="outline" class="textbox-stacked">
+                    <ion-input type="number" inputmode="numeric" min="1" step="1">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-buttons>
+                    <ion-button class="modal-promo-btn">
+                      <ion-label>Applied</ion-label>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col style="padding-left: 6px; padding-right:0;" size="9">
+              <div style="background: rgba(30, 187, 64, 0.1); padding: 5px 10px;">
+                <ion-icon class="promo-tick" name="checkmark-circle-outline"></ion-icon>
+                <ion-note>Promo applied successfully.<span class="payment-option-heading"> 15% discounted</span> in
+                  total order value.</ion-note>
+              </div>
+            </ion-col>
+            <ion-col size="9">
+              <ion-label class="payment-option-heading">Select Payment Method</ion-label>
+            </ion-col>
+            <ion-col size="9" style="padding-right: 0;">
+              <ion-radio-group [(ngModel)]="paymentdata" name="asd">
+                <div [ngClass]="{'paymenthighlight':paymentdata==='Wallet'}" class="payment-method">
+                  <ion-radio class="payment" value="Wallet"></ion-radio>
+                  <ion-label>Wallet</ion-label>
+                </div>
+                <div [ngClass]="{'paymenthighlight':paymentdata==='Banking'}" class="payment-method">
+                  <ion-radio class="payment" value="Banking"></ion-radio>
+                  <ion-label>Net Banking</ion-label>
+                </div>
+                <div [ngClass]="{'paymenthighlight':paymentdata==='gpay'}" class="payment-method">
+                  <ion-radio class="payment" value="gpay"></ion-radio>
+                  <ion-label>Google pay</ion-label>
+                </div>
+                <div [ngClass]="{'paymenthighlight':paymentdata==='Cards'}" style="border-bottom:  1px solid #CFCFCF;;"
+                  class="payment-method">
+                  <ion-radio class="payment" value="Cards"></ion-radio>
+                  <ion-label>Cards</ion-label>
+                </div>
+              </ion-radio-group>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="model-footer-button">
+              <ion-buttons style="display: flex;justify-content: center;">
+                <ion-button style="background-color: #FFFFFF; color: #6495ED;" class="menu-btn"
+                  (click)="setOpen(false)"><ion-label class="menu-btn-label">Cancel</ion-label></ion-button>
+                <ion-button style="background-color: #6495ED; color: #FFFFFF;" class="menu-btn"><ion-label
+                    class="menu-btn-label">Confirm & Pay</ion-label></ion-button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-template>
+    </ion-modal>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+@import "../../../theme/form.scss";
+@import "../../../theme/variables.scss";
+
+.category-grid-container {
+  background-color: #fafafa;
+  height: 100%;
+}
+
+.inner-container {
+
+  ion-header {
+    ion-toolbar {
+      padding-left: 40px;
+      padding-top: 19px;
+
+
+      ion-title {
+        font-family: "Inter";
+        font-weight: 600;
+        font-size: 16px;
+        color: #16392f;
+      }
+    }
+  }
+
+  .body-container {
+    margin: 0px 35px 25px 35px;
+    min-height: 100px;
+
+    .category-title {
+      padding-left: 8px;
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 14px;
+      color: #656d80;
+    }
+
+    // ion-select {
+    //   width: 100%;
+    // }
+  }
+
+  ion-footer {
+    padding-bottom: 22px;
+    .cancel-button {
+      margin-left: 42px;
+    }
+    .proceed-button {
+      margin-right: 42px;
+    }
+  }
+
+}
+
+.attribute-container {
+  --height: 400px;
+  --width: 417px;
+  --border-radius: 15px;
+  padding: 0px 12px;
+}

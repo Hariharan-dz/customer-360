@@ -1,0 +1,126 @@
+<section class="overall-wrapper">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <h1 class="common-header">Ticket Statistics</h1>
+        </div>
+      </ion-col>
+      <ion-col size="12" class="ion-margin-top">
+        <ion-card class="ion-no-margin campaign-card">
+          <ion-row>
+            <ion-col size="3" class="graph-data" style=" display: flex;
+            justify-content: center;
+            align-items: center;">
+              <div>
+                <apx-chart [series]="campaignsChart.series" [chart]="campaignsChart.chart"
+                  [dataLabels]="campaignsChart.dataLabels" [plotOptions]="campaignsChart.plotOptions"
+                  [labels]="campaignsChart.labels" [colors]="campaignsChart.colors"
+                  [legend]="campaignsChart.legend"></apx-chart>
+              </div>
+            </ion-col>
+            <ion-col size="3" class=" notification-status">
+              <div class="d-flex-XY flex-col border-r">
+                <div>
+                  <h3>NOTIFICATIONS SENT</h3>
+                  <ion-label>312</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2" class=" views-status">
+              <div class="d-flex-XY flex-col border-r">
+                <div>
+                  <h3>VIEWS</h3>
+                  <ion-label>111</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="click-status">
+              <div class="d-flex-XY flex-col border-r">
+                <div>
+                  <h3>ACTED ON</h3>
+                  <ion-label>24</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="click-status">
+              <div class="d-flex-XY flex-col border-r">
+                <div>
+                  <h3>REVENUE</h3>
+                  <ion-label>$ 506</ion-label>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col class="campaigns-grid">
+        <app-data-table #campaigns_grid [tableDetails]="campaignsTableDetails"></app-data-table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+
+<!-- popover for campaigns details-->
+<div class="modal-popup">
+  <ion-modal style="--height: auto;--width:565px; --border-radius:10px;" [isOpen]="isOpen" [backdropDismiss]=false>
+    <ng-template class="model">
+      <!-- header -->
+      <ion-grid style="margin: 0; padding: 0;">
+        <ion-row class="model-inline">
+          <ion-col size="12">
+            <ion-item lines="" style="--padding-start: 0;">
+              <ion-label class="model_header">Notification Overview</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="model-inline">
+        </ion-row>
+        <ion-row class="model-inline scroll-height">
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">ID</ion-note>
+            <ion-label>{{campaignsDetail.id}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">USER ID</ion-note>
+            <ion-label>{{campaignsDetail.user_id}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">CATEGORY</ion-note>
+            <ion-label>{{campaignsDetail.category_name}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">CHANNELS</ion-note>
+            <ion-label>{{campaignsDetail.channel[0].title}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">IDENTIFIER</ion-note>
+            <ion-label>{{campaignsDetail.identifier}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">PRIORITY</ion-note>
+            <ion-label>{{campaignsDetail.priority}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">STATUS</ion-note>
+            <ion-label>{{campaignsDetail.status}}</ion-label>
+          </ion-col>
+          <ion-col class="margin-col" size="6">
+            <ion-note class="modal-title-heading">SENT TIME</ion-note>
+            <ion-label>{{campaignsDetail.sent_at}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-footer>
+          <ion-row>
+            <ion-col size="12" class="model-footer-button">
+              <ion-buttons class="close-btn">
+                <ion-button class="close-btn-label" (click)="isOpen=false"><ion-label
+                    class="menu-btn-text">OK</ion-label></ion-button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-footer>
+      </ion-grid>
+    </ng-template>
+  </ion-modal>
+</div>

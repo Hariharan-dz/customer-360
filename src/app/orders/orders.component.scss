@@ -1,0 +1,147 @@
+@import "../../theme/form.scss";
+
+.user-side-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 124px);
+}
+
+.left-side-panel {
+  overflow: auto;
+  width: 274px;
+  min-width: 274px;
+  border-right: 1px solid #dadada;
+  background-color: #FFFFFF;
+  border-right: 1px solid #dadada;
+  padding: 0px 15px 15px 15px;
+}
+
+.search-criteria-header {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.aside-filter {
+  div {
+    margin-top: 14px;
+
+    ion-item {
+      margin-top: 5px;
+      --background: #fafafa
+    }
+  }
+}
+
+/*media query*/
+@media (min-width: 992px) {
+  .table-media-query {
+    width: calc(100% - 274px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .table-media-query {
+    width: calc(100% - 274px) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-media-query {
+    width: calc(100% - 0px);
+  }
+}
+
+@media (min-width: 768px) {
+  .table-media-query {
+    width: calc(100% - 0px);
+  }
+}
+
+
+.right-contant {
+  padding: 0px 50px;
+}
+
+.table-top-layer-btns {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  height: 41px;
+}
+
+// overwrited
+.common-header {
+  margin-top: 11px;
+}
+
+.header-container {
+  border-bottom: 0.5px solid #dadada !important;
+}
+
+.table-top-layer-btns {
+  float: right !important;
+
+}
+
+// popup detail css
+.model-inline {
+  padding: 0 40px;
+}
+
+.scroll-height {
+  overflow: auto;
+  margin-top: 15px;
+  padding: 0 25px 0 40px;
+}
+
+.margin-col {
+  margin-bottom: 16px
+}
+
+.modal-title-heading {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.model-footer-button {
+  padding: 10px 0;
+  background: #F6F6F6;
+}
+
+.close-btn {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.close-btn-label {
+  background-color: #6495ED;
+  color: #FFFFFF;
+  border-radius: 5px;
+  height: 44px;
+}
+
+.menu-btn-text {
+  padding: 12px 40px !important
+}
+
+.model_header {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: #212121;
+}
+
+.model {
+  padding: 20px;
+}
+
+.modal-popup {
+  .header-content {
+    padding: 40px 0px 0px 24px;
+  }
+}

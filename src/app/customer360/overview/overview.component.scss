@@ -1,0 +1,385 @@
+@import '../../../theme/form.scss';
+
+ion-card {
+  box-shadow: none;
+  border-radius: 4px;
+  border: 1px solid #DADADA;
+}
+
+.three-card-container {
+  display: flex;
+  height: 148px;
+
+  ion-card {
+    flex: 1;
+  }
+
+  .header-content {
+    height: 48px;
+    background-color: var(--ion-color-header-txt);
+
+    ion-label {
+      color: var(--common-text);
+      float: left;
+    }
+
+    a {
+      // color: var(--common-text);
+      float: right;
+    }
+  }
+}
+
+.card-content {
+  height: 100px;
+  padding: 16px;
+
+  .card-left-heading {
+    // float: left;
+    color: black;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .card-right-value {
+    float: right;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: right;
+  }
+
+  .left-align {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+.three-btns {
+  float: right;
+  margin: 24px 0px 32px 0px;
+
+  ion-button {
+    margin: 0px 6px
+  }
+
+  ion-label {
+    text-transform: none;
+  }
+}
+
+.insights-list {
+  li {
+    margin: 8px 0px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--common-text);
+  }
+}
+
+
+.active-container {
+  float: right;
+
+  ion-icon {
+    color: #09C34D;
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+  ion-label {
+    margin-top: 3px;
+  }
+}
+
+.insight-main-wrapper {
+  display: flex;
+
+  .insight-left-container {
+    flex: 1.95;
+    height: 148px;
+    border-radius: 4px;
+    border: 1px solid #DADADA;
+    display: flex;
+    align-items: center;
+  }
+
+  .insight-right-container {
+    flex: 0.9;
+    text-align: left;
+    margin-left: 16px;
+    border-radius: 4px;
+    padding: 24px 0px 0px 24px;
+    border: 1px solid #DADADA;
+
+    .line-1 {
+      margin-bottom: 8px;
+
+      ion-label {
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: var(--common-text);
+      }
+    }
+
+    .line-2 {
+      margin-bottom: 24px;
+
+      ion-label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #808080;
+      }
+    }
+
+    .line-3 {
+      margin-bottom: 8px;
+
+      ion-label {
+        font-size: 24px;
+        color: var(--ion-color-primary);
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 20px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.subscription-plan-cards {
+  .backgrnd {
+    height: 160px;
+    width: 311px;
+    border-radius: 4px;
+    // background-color: #EFEFEF;
+    background: linear-gradient(143deg, rgba(233, 233, 233, 0.74) 50%, rgb(179, 179, 179) 50%);
+
+    // .white-slit {
+    //     height: 16px;
+    //     width: 56px;
+    //     background-color: white;
+    //     border-radius: 2px;
+    //     margin: 12px 16px;
+    // }
+  }
+}
+
+.modal-popup {
+  .header-content {
+    padding: 40px 0px 0px 24px;
+  }
+}
+
+.model {
+  padding: 20px;
+
+}
+
+.model_header {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  padding: 15px 0;
+  color: #212121;
+}
+
+.model-img {
+  height: 80px;
+}
+
+.model-pro-title {
+  color: #212121;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 8px;
+}
+
+.model-prod-price {
+  color: #212121;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 10px;
+  background: #E6F2FD;
+}
+
+.model-price-label {
+  color: #808080;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 12px;
+}
+
+.model-footer-button {
+  padding: 10px 0;
+  background: #F6F6F6;
+}
+
+.menu-btn {
+  padding: 0px 0px;
+  margin: 10px 10px;
+  border: 1px solid #6495ED;
+  height: 44px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.menu-btn-label {
+  padding: 1px;
+}
+
+.model-inline {
+  padding: 0 40px;
+}
+
+.dropdown-stacked {
+  float: right;
+  --min-height: 23px;
+  // transform: translateY(0px);
+  border-radius: 21px;
+
+  // --inner-padding-end: 0px;
+  ion-select {
+    transform: translateY(-8px);
+  }
+}
+
+.dropdown-stacked.item-has-value {
+  // transform: translateY(0px) !important;
+
+  ion-select {
+    transform: translateY(-4px);
+    font-size: 12px;
+  }
+}
+
+.dropdown-stacked.item-has-focus {
+  // --highlight-color-valid: var(--grid-content-txt);
+  // --show-full-highlight: 0.65;
+  // --inner-padding-end: 0px;
+
+  &::part(native) {
+    // border-color: #d4d4d4;
+    // --inner-padding-end: 0px;
+  }
+
+  ion-select::part(icon) {
+    // transform: translate3d(0px, 0px, 0px) rotate(180deg);
+    // --inner-padding-end: 0px;
+  }
+
+  ion-label {
+    color: var(--grid-content-txt);
+    // --inner-padding-end: 0px;
+  }
+}
+
+.btn-qty-label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #808080;
+}
+
+.btn-qty {
+  border: 1px solid #808080;
+  padding: 0px 0px 0 12px;
+  border-radius: 30px;
+}
+
+.dropdown-stacked ion-select {
+  transform: translateY(-8px);
+}
+
+.model-scroll {
+  height: 280px;
+  overflow: auto;
+}
+
+.model-bottom {
+  margin-bottom: 20px;
+}
+
+.tile-container {
+  display: flex;
+
+  ion-card {
+    width: 272px;
+    height: 164px;
+    padding: 24px;
+    box-shadow: none;
+    border: 1px solid var(--common-text-white);
+
+    .sml-heading {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--common-small-subheading);
+    }
+
+    .content {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--common-text);
+    }
+
+    .down-content {
+      margin-top: 24px;
+    }
+  }
+}
+
+.p-8 {
+  padding-bottom: 8px
+}
+
+a {
+  text-decoration: none;
+  color: var(--common-text);
+}
+.margin-col {
+  margin-bottom: 16px;
+}
+.modal-title-heading {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.close-btn {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+  border-radius: 5px;
+  height: 40px;
+}
+.close-btn-label {
+  background-color: #6495ED;
+  color: #FFFFFF;
+  border-radius: 5px;
+  height: 44px;
+}
+.menu-btn-text {
+  padding: 12px 40px !important
+}

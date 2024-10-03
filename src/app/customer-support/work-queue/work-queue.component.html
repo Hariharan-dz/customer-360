@@ -1,0 +1,474 @@
+<ion-header class="header-container ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="row-wrapper">
+        <ion-col class="title-column">
+          <div lines="none" class="title-content ion-no-margin ion-no-padding">
+            <h1>Work Queue</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="whole-content-wrapper">
+    <!-- card -->
+    <ion-card class="ion-no-margin work-card card-box-shadow" style="height: 164px;">
+      <!-- content need to be coded -->
+      <ion-row>
+        <ion-col size="3" class="incidents">
+          <div class="d-flex-XY flex-col border-r">
+            <div class="inner-content">
+              <h3>TOTAL TASK</h3>
+              <ion-label>{{summary.totalCount?.count || 0}}</ion-label>
+              <div class="open-close">
+                <ion-row>
+                  <ion-col>
+                    <p>Low <span>{{summary.totalCount?.Low || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>Medium: <span>{{summary.totalCount?.Medium || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>High: <span>{{summary.totalCount?.High || 0}}</span></p>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="3" class="incidents">
+          <div class="d-flex-XY flex-col border-r">
+            <div class="inner-content">
+              <h3>OVERDUE TASK</h3>
+              <ion-label>{{summary.overDueTask?.count || 0}}</ion-label>
+              <div class="open-close">
+                <ion-row>
+                  <ion-col>
+                    <p>Low <span>{{summary.overDueTask?.Low || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>Medium: <span>{{summary.overDueTask?.Medium || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>High: <span>{{summary.overDueTask?.High || 0}}</span></p>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="3" class="incidents">
+          <div class="d-flex-XY flex-col border-r">
+            <div class="inner-content">
+              <h3>OPEN TASK</h3>
+              <ion-label>{{summary.openTask?.count || 0}}</ion-label>
+              <div class="open-close">
+                <ion-row>
+                  <ion-col>
+                    <p>Low <span>{{summary.openTask?.Low || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>Medium: <span>{{summary.openTask?.Medium || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>High: <span>{{summary.openTask?.High || 0}}</span></p>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="3" class="incidents">
+          <div class="d-flex-XY flex-col border-r">
+            <div class="inner-content" style="border: none;">
+              <h3>COMPLETED TASK</h3>
+              <ion-label>{{summary.completedTask?.count || 0}}</ion-label>
+              <div class="open-close">
+                <ion-row>
+                  <ion-col>
+                    <p>Low <span>{{summary.completedTask?.Low || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>Medium: <span>{{summary.completedTask?.Medium || 0}}</span></p>
+                  </ion-col>
+                  <ion-col>
+                    <p>High: <span>{{summary.completedTask?.High || 0}}</span></p>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <div style="margin-top: 32px;">
+      <h1 class="common-header">Task List</h1>
+    </div>
+
+    <!-- tab change -->
+    <ion-grid class="ion-no-padding tab-grid">
+      <ion-row style="height: 49px;">
+        <ion-col size-lg="6" class="ion-no-padding">
+          <ion-segment value="task" class="ion-segment" swipe-gesture="false" style="width: 600px;">
+            <ion-segment-button style="border-right: 1px solid #dadada;" value="task" (click)="switchView('TASK')">
+              <ion-label>My Task</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="queue" (click)="switchView('QUEUE')">
+              <ion-label>Queue
+              </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+        <ion-col size-lg="6">
+          <ion-button color="primary" class="create-btn" (click)="isCreateTicketModel=true">
+            <ion-icon name="add-outline" style="color: white;" slot="start"></ion-icon>
+            <ion-label class="create-new-task ion-no-padding">
+              Create New Task</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row [hidden]="view === 'TASK'">
+        <ion-col class="ion-no-padding" size="12">
+          <ion-card class="ion-no-margin my-task-table tab-content wqm-table">
+            <app-data-table [tableDetails]="task"></app-data-table>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row [hidden]="view === 'QUEUE'">
+        <ion-col class="ion-no-padding" size="12">
+          <ion-card class="ion-no-margin work-queue-table tab-content wqm-table">
+            <app-data-table [tableDetails]="queue"></app-data-table>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!--modal-->
+    <div class="modal-popup">
+      <ion-modal style="--height: calc(100Vh - 120px);--width:720px" [isOpen]="isEditModal" backdropDismiss="false">
+        <ng-template class="model">
+          <!-- header -->
+          <ion-grid style="margin: 0; padding: 0;">
+            <ion-row class="model-inline">
+              <ion-col size="12">
+                <ion-item lines="" style="--padding-start: 0; margin-top: 26px">
+                  <ion-label class="model_header">Ticket Details</ion-label>
+                  <!-- <ion-label style="display: contents;"><ion-img class="model-header-right"
+                      src="../../../assets/icon/edit.svg"></ion-img>Edit
+                    task</ion-label> -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row class="model-inline">
+
+            </ion-row>
+            <!-- <ion-row class="margin-col" class="model-inline">
+              <ion-col size="12">
+                <div>
+                  <ion-note class="comments-des">Description</ion-note>
+                  <p class="com-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non libero
+                    quis arcu lobortis
+                    vestibulum et in nisi. Duis ac faucibus ligula, eget viverra risus. Duis commodo rhoncus pretium.
+                  </p>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-label class="inform-title">Additional Information</ion-label>
+              </ion-col>
+              <ion-col size="12">
+                <ion-label class="inform-subtitle">Comments</ion-label>
+              </ion-col>
+            </ion-row> -->
+            <ion-row class="model-inline scroll-height">
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">Id</ion-note>
+                <ion-label>8762478720</ion-label>
+              </ion-col>
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">TaskName</ion-note>
+                <ion-label>Incident</ion-label>
+              </ion-col>
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">Description</ion-note>
+                <ion-label>Detailed description</ion-label>
+              </ion-col>
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">Assignee</ion-note>
+                <ion-label>John Connor</ion-label>
+              </ion-col>
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">Priority</ion-note>
+                <ion-label>Resolved</ion-label>
+              </ion-col>
+              <ion-col class="margin-col" size="6">
+                <ion-note class="modal-title-heading">Status</ion-note>
+                <ion-label>High</ion-label>
+              </ion-col>
+              <ion-col size="12">
+                <div>
+                  <ion-note class="comments-des">Description</ion-note>
+                  <p class="com-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non libero
+                    quis arcu lobortis
+                    vestibulum et in nisi. Duis ac faucibus ligula, eget viverra risus. Duis commodo rhoncus pretium.
+                  </p>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <ion-label class="inform-title">Additional Information</ion-label>
+              </ion-col>
+              <ion-col size="12">
+                <ion-label class="inform-subtitle">Comments</ion-label>
+              </ion-col>
+              <ion-col style="padding:0px">
+                <ion-row class="comments-space">
+                  <ion-col size="12">
+                    <ion-avatar class="comments-icon">
+                      <ion-img src="../../../assets/icon/user.png"></ion-img>
+                    </ion-avatar>
+                    <div style="margin-top: 5px;">
+                      <ion-note style="margin-right: 12px;">John Connor</ion-note>
+                      <ion-note style="margin-right: 6px;">25/02/22</ion-note>
+                      <ion-note>03:21 PM</ion-note>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <p class="feedback-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non
+                      libero
+                      quis arcu lobortis
+                      vestibulum et in nisi. Duis ac faucibus ligula, eget viverra risus. Duis commodo rhoncus pretium.
+                      Nunc
+                      scelerisque egestas magna, in ullamcorper ante euismod sit amet. Nullam rutrum sit amet mauris et
+                      consectetur. Nunc non luctus ante. Curabitur sodales a diam vitae venenatis.</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="comments-space">
+                  <ion-col size="12">
+                    <ion-avatar class="comments-icon">
+                      <ion-img src="../../../assets/icon/user.png"></ion-img>
+                    </ion-avatar>
+                    <div style="margin-top: 5px;">
+                      <ion-note style="margin-right: 12px;">John Connor</ion-note>
+                      <ion-note style="margin-right: 6px;">25/02/22</ion-note>
+                      <ion-note>03:21 PM</ion-note>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <p class="feedback-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non
+                      libero
+                      quis arcu lobortis
+                      vestibulum et in nisi. Duis ac faucibus ligula, eget viverra risus. Duis commodo rhoncus pretium.
+                      Nunc
+                      scelerisque egestas magna, in ullamcorper ante euismod sit amet. Nullam rutrum sit amet mauris et
+                      consectetur. Nunc non luctus ante. Curabitur sodales a diam vitae venenatis.</p>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <ion-row class="model-inline">
+              <ion-col size="12" style="margin: 12px 0px;padding: 0;">
+                <ion-label>Add a comment</ion-label>
+              </ion-col>
+              <ion-col style="padding: 0;" size="12">
+                <ion-textarea class="commant-textarea" placeholder="Add comments if any"></ion-textarea>
+              </ion-col>
+            </ion-row>
+            <!-- <ion-row class="model-inline">
+               <ion-col>
+                <ion-buttons>
+                  <ion-button>
+                    <ion-label>
+                      Attach File
+                    </ion-label>
+                  </ion-button>
+                </ion-buttons>
+              </ion-col>
+              <ion-col style="padding: 0; margin-top: 8px;" offset="6" size="6">
+                <ion-buttons class="add-comment">
+                  <ion-button color="primary">
+                    <ion-label style="color: white;">
+                      Submit
+                    </ion-label>
+                  </ion-button>
+                </ion-buttons>
+              </ion-col>
+            </ion-row> -->
+            <ion-row>
+              <ion-col size="12" class="model-footer-button">
+                <ion-buttons class="close-btn">
+                  <ion-button class="close-btn-label" (click)="isEditModal=false"><ion-label
+                      class="menu-btn-label">OK</ion-label></ion-button>
+                </ion-buttons>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ng-template>
+      </ion-modal>
+    </div>
+  </section>
+  <!-- <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+          reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+          dicta.
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+  <ion-modal style="--height: 633px;--width:720px " [isOpen]="isCreateTicketModel" backdropDismiss="false">
+    <ng-template>
+      <div class="create-ticket-model">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-title class="titleText">
+              <ion-label class="header-label">
+                Create New Ticket
+              </ion-label>
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="margindetail">
+            <ion-grid class="grid-size">
+              <ion-row>
+                <ion-col size="6" class="details">
+                  <div class="textbox-left">
+                    <ion-label class="content">
+                      Ticket ID
+                    </ion-label>
+                    <ion-input class="border" [(ngModel)]="wqm.id" name="id"></ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="6">
+                  <div class="textbox-right">
+                    <ion-label class="content">
+                      Task Name
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-input class="border" [(ngModel)]="wqm.name" name="name" placeholder="Task Name">
+                    </ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="6">
+                  <div class="textbox-left">
+                    <ion-label class="content">
+                      Queue Name
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-input placeholder="Queue Name" [(ngModel)]="wqm.queue_name" name="queue_name" class="border">
+
+                    </ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="6" class="details">
+                  <div class="textbox-right">
+                    <ion-label class="content">
+                      Ticket Type
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-input placeholder="Ticket Type" [(ngModel)]="wqm.type_name" name="type_name" class="border">
+
+                    </ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="6" class="details">
+                  <div class="textbox-left">
+                    <ion-label class="content">
+                      Due Date
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-input style="--padding-end:15px; --color: #B5B5B5;" placeholder="Task type"
+                      [(ngModel)]="wqm.dueDate" name="dueDate" class="border" type="date"></ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="6" class="details">
+                  <div class="textbox-right">
+                    <ion-label class="content">
+                      Priority
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-item fill="outline" class="dropdown-stacked" style="--min-height: 39px">
+                      <ion-label position="stacked"></ion-label>
+                      <ion-select class="ion-no-padding" interface="popover" placeholder="Priority">
+                        <ion-select-option value="">Low</ion-select-option>
+                        <ion-select-option value="lastt10day">Medium</ion-select-option>
+                        <ion-select-option value="last30day">High</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+                <ion-col size="6" class="details">
+                  <div class="textbox-left">
+                    <ion-label class="content">
+                      Status
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-item fill="outline" class="dropdown-stacked" style="--min-height: 39px">
+                      <ion-label position="stacked"></ion-label>
+                      <ion-select class="ion-no-padding" interface="popover" placeholder="Status">
+                        <ion-select-option value="">Open</ion-select-option>
+                        <ion-select-option value="inprogress">Inprogress</ion-select-option>
+                        <ion-select-option value="close">Close</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+                <ion-col size="6" class="details">
+                  <div class="textbox-right">
+                    <ion-label class="content">
+                      Assignee
+                      <span class="redcolor">*</span>
+                    </ion-label>
+                    <ion-input placeholder="Assignee" class="border" [(ngModel)]="wqm.assignee" name="assignee">
+
+                    </ion-input>
+                  </div>
+                </ion-col>
+
+                <ion-col size="12" style="padding-top: 20px ;">
+                  <div>
+                    <ion-label class="content">
+                      Description
+                    </ion-label>
+                    <ion-textarea class="border" [(ngModel)]="wqm.description" name="description"
+                      placeholder="Enter a task description" style="height: 70px;">
+                    </ion-textarea>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-content>
+        <ion-footer class="footer">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+              </ion-col>
+              <ion-col size="6">
+                <ion-buttons style="float: right; margin-right: 30px;">
+                  <ion-button color="secondary" (click)="isCreateTicketModel=false" class="footer-button">
+                    <ion-label>Cancel</ion-label>
+                  </ion-button>
+                  <ion-button class="save-button" style="margin-left: 16px;" color="primary" class="footer-button">
+                    <ion-label style="color: #FFFFFF;" (click)="saveWQM()">Save</ion-label>
+                  </ion-button>
+                </ion-buttons>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-footer>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>

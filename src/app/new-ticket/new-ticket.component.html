@@ -1,0 +1,141 @@
+<ion-header class="header-container ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="row-wrapper">
+        <ion-col class="title-column">
+          <div lines="none" class="title-content  ion-no-margin ion-no-padding">
+            <h1>Tickets</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <ion-grid class="ion-no-padding category-grid-container">
+      <ion-row class="h-100-per">
+        <ion-col class="user-side-container ion-no-padding ">
+          <!-- div for column separation -->
+          <div class="left-side-panel ion-hide-lg-down">
+            <!-- heading search category -->
+            <ion-row class="ion-margin-top">
+              <ion-col class="ion-no-padding">
+                <h2 class="ion-margin-vertical search-criteria-header">
+                  Search Criteria</h2>
+              </ion-col>
+            </ion-row>
+            <!-- admin/roles fields -->
+            <ion-row>
+              <ion-col class="aside-filter">
+                <div>
+                  <label>Ticket Number</label>
+                  <ion-item fill="outline" class="textbox-stacked">
+                    <ion-label position="stacked"></ion-label>
+                    <ion-input name="ticket" type="number" min="1" inputmode="numeric" (keypress)="numericOnly($event)"
+                      placeholder="Ticket Number"></ion-input>
+                  </ion-item>
+                </div>
+
+                <div>
+                  <label>Ticket Type</label>
+                  <ion-item fill="outline" class="dropdown-stacked">
+                    <ion-label position="stacked"></ion-label>
+                    <ion-select value="" class="ion-no-padding" interface="popover">
+                      <ion-select-option value="" class="mucustom">All</ion-select-option>
+                      <ion-select-option value="Incident" class="mucustom">Incident</ion-select-option>
+                      <ion-select-option value="Problem" class="mucustom">Problem</ion-select-option>
+                      <ion-select-option value="Service Request" class="mucustom">Service Request</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </div>
+
+                <div>
+                  <label>Priority</label>
+                  <ion-item fill="outline" class="dropdown-stacked">
+                    <ion-label position="stacked"></ion-label>
+                    <ion-select value="" class="ion-no-padding" interface="popover">
+                      <ion-select-option value="" class="mucustom">All</ion-select-option>
+                      <ion-select-option value="HIGH" class="mucustom">High</ion-select-option>
+                      <ion-select-option value="MEDIUM" class="mucustom">Medium</ion-select-option>
+                      <ion-select-option value="LOW" class="mucustom">Low</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </div>
+
+                <div>
+                  <label>Status</label>
+                  <ion-item fill="outline" class="dropdown-stacked">
+                    <ion-label position="stacked"></ion-label>
+                    <ion-select value="" class="ion-no-padding" interface="popover">
+                      <ion-select-option value="" class="mucustom">All</ion-select-option>
+                      <ion-select-option value="In_Progress" class="mucustom">In Progress</ion-select-option>
+                      <ion-select-option value="Resolved" class="mucustom">Resolved</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </div>
+
+                <div>
+                  <label>Assignee</label>
+                  <ion-item fill="outline" class="textbox-stacked">
+                    <ion-label position="stacked"></ion-label>
+                    <ion-input name="assignee" placeholder="Assignee" type="text"></ion-input>
+                  </ion-item>
+                </div>
+
+              </ion-col>
+            </ion-row>
+            <!-- buttons - reset and search -->
+            <div>
+              <ion-row style="margin-top: 25px;">
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-button expand="block" color="primary" style="margin: 0px 2px 0px 0px">
+                    <!-- <ion-icon name="funnel-outline" style="padding-right:8px"></ion-icon> -->
+                    <ion-label>Search</ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-button expand="block" color="secondary" style="margin: 0px 0px 0px 3px; padding-right: 1px;">
+                    <!-- <ion-icon name="refresh-outline" style="padding-right:5px"></ion-icon> -->
+                    <ion-label>Reset</ion-label>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+          <!-- angular material for table -->
+
+          <!-- Angular material -->
+          <div class="table-media-query" style="background-color: #FAFAFA;">
+            <ion-grid class=" padding-hide-md-down right-contant">
+              <ion-row>
+                <ion-col size-md="12" class="ion-no-padding">
+                  <ion-row>
+                    <!-- table-top-layer-btns -->
+                    <ion-col size-xl="8" offset-xl="4" size-lg="8" offset-lg="4" size-md="12" offset-md="0" size-sm="12"
+                      offset-sm="0" size-xs="12" offset-xs="0" class=" ion-no-padding ion-margin">
+                      <div class="table-top-layer-btns">
+                        <ion-button expand="block"
+                          class="create-view-btn ion-no-margin  ion-text-capitalize create-ion-button" color="tertiary">
+                          <!-- <ion-icon name="notifications-outline"></ion-icon> -->
+                          <ion-img slot="start"
+                            src="../../assets/icons/{{custmservice.themeName}}/Tickets_Line.svg"></ion-img>
+                          <ion-label>Create Tickets</ion-label>
+                        </ion-button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <!-- Angular Material DATATABLE -->
+                <ion-col size="12" class="ion-no-padding">
+                  <app-data-table #campaigns_grid [tableDetails]="newTicketTableDetails"></app-data-table>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

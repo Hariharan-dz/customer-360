@@ -1,0 +1,162 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<ion-content>
+  <div class="testing-font">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="12">
+          <div class="user-detail-container">
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="0.5">
+                  <div lines="none" class="back-icon cursor-pointer">
+                    <ion-icon name="chevron-back-outline" routerLink="/customers" routerDirection="back"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col size-xl="3" size-lg="3" size-md="3" size-sm="3" size-xs="3" class="border-r">
+                  <div>
+                    <ion-row class="user-details">
+                      <ion-col size="2.5">
+                        <div class="user-profile">
+                          <ion-avatar><ion-img
+                              src="../../../assets/icon/charlie-green-3JmfENcL24M-unsplash 1.png"></ion-img></ion-avatar>
+                        </div>
+                      </ion-col>
+                      <ion-col size="9.5">
+                        <div class="user-info">
+                          <h3> {{ userDetails?.name}} <span>ID: {{ userDetails?.id }} </span></h3>
+                          <p>DOB: {{ userDetails?.date_of_birth }} &nbsp;|&nbsp; Retail</p>
+                          <p><span><ion-icon name="location"></ion-icon></span>Houston, Tx, United States<span
+                              class="ion-padding-start" style="color: var(--ion-color-primary)">map</span></p>
+                          <p><span><ion-icon name="call"></ion-icon></span> {{ userDetails?.primary_telephone_number }}
+                          </p>
+                          <p><span><ion-icon name="mail"></ion-icon></span> {{ userDetails?.primary_email }} <span
+                              class="ion-padding-start" style="color: var(--ion-color-primary)">View More</span></p>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-col>
+                <ion-col size-xl="2.5" size-lg="2.5" size-md="2.5" size-sm="2.5" size-xs="2.5"
+                  class="executive-container d-flexVcenter border-r">
+                  <div
+                    style="display: flex;flex-direction: column; height: 80px; width: 200px; justify-content: space-between;">
+                    <div class="executive-wrapper">
+                      <div class="d-flex">
+                        <ion-icon name="diamond-outline"></ion-icon>
+                        <ion-label class="f-14">Executive</ion-label>
+                      </div>
+                    </div>
+                    <div class="excutive-content">
+                      <div>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                      </div>
+                      <p>3/5</p>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col size-xl="2.5" size-lg="2.5" size-md="2.5" size-sm="2.5" size-xs="2.5"
+                  class="d-flexVcenter border-r">
+                  <div class="outstanding-container">
+                    <div>
+                      <h3 class="header">OUTSTANDING </h3>
+                      <ion-img src="../../../assets/icon/dollar.svg"></ion-img>
+                    </div>
+                    <p>{{(userType == 'NEW_USER' || userType == 'PROSPECT') ? '$00.00': '$73.00'}}</p>
+                  </div>
+                </ion-col>
+                <ion-col size-xl="3.5" size-lg="3.5" size-md="3.5" size-sm="3.5" size-xs="3.5"
+                  class="d-flexVcenter border-r" style="border: none">
+                  <div class="content-wrap">
+                    <div class="wallet-container">
+                      <div>
+                        <ion-label class="header">WALLET</ion-label>
+                        <ion-img src="../../../assets/icon/walleticon - Copy.svg"></ion-img>
+                      </div>
+                      <p>$00.00</p>
+                    </div>
+                    <div class="tme-line-btn">
+                      <!-- <ion-buttons > -->
+                      <ion-button color="secondary" class="timeline-btn ion-float-end ion-no-margin">
+                        <ion-label style="padding: 2px 0px 2px 0px">Timeline</ion-label>
+                        <span style="margin-left: 5px"><ion-icon style=" color:var(--ion-color-primary)"
+                            name="chevron-forward-outline">
+                          </ion-icon>
+                        </span>
+                      </ion-button>
+                      <!-- </ion-buttons> -->
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+        <!-- tab container -->
+        <ion-col class="ion-no-padding">
+          <div class="" style="padding: 16px 16px 0px 16px">
+            <ion-row>
+              <ion-col size="9" class="ion-no-padding">
+                <div>
+                  <ion-grid class="ion-no-padding">
+                    <ion-row class="tab-row">
+                      <ion-col class="ion-no-padding" size-xl="12" size-lg="12" size-md="12" size-sm="12" offset-sm="0"
+                        size-xs="12" offset-xs="0">
+                        <div class="tab-outline">
+                          <ul class="tab-container">
+                            <li *ngFor="let Tab of customer360Tab" class="cursor-pointer"
+                              [ngClass]="{'active' : selectedList===Tab}" (click)="showComponent(Tab)">
+                              {{Tab}}
+                            </li>
+                          </ul>
+                          <div class="tab-content cstm_scroll">
+                            <ng-container *ngIf="selectedList==='Overview'">
+                              <app-overview [userType]="userType" [userDetails]="userDetails"
+                                *ngIf="userType != 'NEW_USER'"></app-overview>
+                            </ng-container>
+                            <ng-container *ngIf="selectedList==='Usage and Balance'">
+                              <app-usageandbalance *ngIf="userType != 'NEW_USER'"></app-usageandbalance>
+                            </ng-container>
+                            <ng-container *ngIf="selectedList==='Billing'">
+                              <app-billing *ngIf="userType != 'NEW_USER'"></app-billing>
+                            </ng-container>
+                            <ng-container *ngIf="selectedList==='Tickets'">
+                              <app-requests *ngIf="userType != 'NEW_USER' && userType != 'PROSPECT'"></app-requests>
+                            </ng-container>
+                            <ng-container *ngIf="selectedList==='Notifications'">
+                              <app-campaigns *ngIf="userType != 'NEW_USER'"></app-campaigns>
+                            </ng-container>
+                            <ng-container *ngIf="selectedList==='Orders' && userType != 'PROSPECT'">
+                              <app-purchases *ngIf="userType != 'NEW_USER'"></app-purchases>
+                            </ng-container>
+                          </div>
+                        </div>
+
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-col>
+              <ion-col size="3" class="ion-no-padding ion-padding-start interaction-history-container">
+                <div>
+                  <ion-header class="ion-no-border">
+                    <ion-item class="inter">
+                      <h2 class="interaction-header"> Interaction History</h2>
+                      <ion-icon slot="end" name="reader-outline"></ion-icon>
+                    </ion-item>
+                  </ion-header>
+                  <div class="history-content cstm_scroll" style="background: white;">
+                    <app-interaction-history></app-interaction-history>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,44 @@
+@import "../../../../theme/form.scss";
+
+ion-header {
+  ion-toolbar {
+    padding-left: 40px;
+    padding-top: 30px;
+
+    ion-title {
+      font-family: "Inter";
+      font-weight: 600;
+      font-size: 16px;
+      color: #16392f;
+    }
+  }
+}
+
+.body-container {
+  margin: 0px 35px 25px 35px;
+  min-height: 100px;
+
+  .category-title {
+    padding-left: 8px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 14px;
+    color: #656d80;
+  }
+
+  ion-select {
+    width: 100%;
+  }
+}
+
+ion-footer {
+  padding-bottom: 22px;
+  
+  .cancel-btn {
+    margin-left: 40px;
+  }
+  
+  .proceed-btn {
+    margin-right: 40px;
+  }
+}

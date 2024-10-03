@@ -1,0 +1,47 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<section class="cstm_scroll">
+  <ion-card class="intercard">
+    <ion-card-content class="content">
+      <div style="padding-top: 5px;">
+        <ion-buttons>
+          <ion-button color="secondary" class="social_info_buttons f-14"><ion-label>Email</ion-label></ion-button>
+          <ion-button color="secondary" class="social_info_buttons f-14"><ion-label>Mobile</ion-label></ion-button>
+          <ion-button color="secondary" class="social_info_buttons f-14"><ion-label>Social
+              media</ion-label></ion-button>
+        </ion-buttons>
+      </div>
+      <!---->
+      <div class="history_style" *ngFor="let parts of historyData">
+        <!--1st loop-->
+        <div *ngIf="parts.summary != null">
+          <div class="logos">
+            <ion-note style="float: left;">{{parts.event_date}}</ion-note>
+            <ion-icon *ngIf="parts.channel == 'EMAIL'"
+              [ngClass]="parts.channel === 'EMAIL' ? 'logo-style' : 'logo-style-tweet'" name="mail"></ion-icon>
+            <ion-icon *ngIf="parts.channel == 'TWEET'"
+              [ngClass]="parts.channel === 'TWEET' ? 'logo-style-tweet' : 'logo-style'" name="logo-twitter"></ion-icon>
+            <ion-icon *ngIf="parts.channel == 'PHONE'"
+              [ngClass]="parts.channel === 'PHONE' ? 'logo-style' : 'logo-style-tweet'" name="call"></ion-icon>
+            <ion-icon *ngIf="parts.channel == 'CHATBOT'"
+              [ngClass]="parts.channel === 'CHATBOT' ? 'logo-style' : 'logo-style-tweet'"
+              name="chatbubble-ellipses"></ion-icon>
+          </div>
+          <div>
+            <ion-label class="label">{{parts.title}}</ion-label>
+            <ion-note class="amount">{{parts.summary}}</ion-note>
+            <div *ngIf="parts.tags != null">
+              <ion-label *ngFor="let tag of parts.tags" class="status"> {{tag.key + ': '}}<span class="amount">{{tag.value}}</span></ion-label>
+            </div>
+          </div>
+        </div>
+        <!---->
+      </div>
+    </ion-card-content>
+    <ion-buttons style="float:right;margin-top: 15px;" *ngIf="historyData.length > 5">
+      <ion-button style="border: none;" color="secondary">
+        <ion-label style="padding: 5px 0px 2px 15px;">See more</ion-label>
+        <ion-icon style="color: var(--ion-color-primary);" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-card>
+</section>
